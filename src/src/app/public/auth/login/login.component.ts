@@ -35,6 +35,10 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
         this.userService.authenticate(this.email, this.password, this);
     }
 
+    onIdpClick() {
+        window.location.href='https://talladegasso.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=4kg3112uhm718bq58v6gpc73cr&redirect_uri=https://localhost:4200'
+    }
+
     cognitoCallback(message: string, result: any) {
         if (message != null) { // error
             this.errorMessage = message;

@@ -3,18 +3,21 @@ import {AwsUtil} from './service/aws.service';
 import {UserLoginService} from './service/user-login.service';
 import {CognitoUtil, LoggedInCallback} from './service/cognito.service';
 
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, LoggedInCallback {
 
-  constructor(public awsUtil: AwsUtil, public userService: UserLoginService, public cognito: CognitoUtil) {
+  constructor(public awsUtil: AwsUtil, public userService: UserLoginService, public cognito: CognitoUtil, private http: Http) {
     console.log('AppComponent: constructor');
   }
 
   ngOnInit() {
     console.log('AppComponent: Checking if the user is already authenticated');
+    console.log(Headers);
     this.userService.isAuthenticated(this);
   }
 
